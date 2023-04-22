@@ -13,15 +13,14 @@ HTTP library for iOS (Objective-C, Swift)
 	- Add 'App Transport Security Settings'.
 
 	- ex)
-<pre>
-<code>
+
+~~~
 		<key>NSAppTransportSecurity</key>
 		<dict>
 			<key>NSAllowsArbitraryLoads</key>
 			<true/>
 		</dict>	
-</code>		
-</pre>
+~~~
 
 3. Usage
 
@@ -214,15 +213,13 @@ HTTP library for iOS (Objective-C, Swift)
 	- Add 'App Transport Security Settings'.
 
 	- ex)
-<pre>
-<code>
+~~~
 		<key>NSAppTransportSecurity</key>
 		<dict>
 			<key>NSAllowsArbitraryLoads</key>
 			<true/>
 		</dict>	
-</code>		
-</pre>
+~~~
 
 3. Usage
 
