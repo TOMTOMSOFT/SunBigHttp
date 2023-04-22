@@ -369,7 +369,7 @@ HTTP library for iOS (Objective-C, Swift)
 	    
 	    
 	    
-[Copyright]
+[Copyright]. 
 This SunBigHttp library is free for personal use only. 
 For other uses, a legal license is required; contact tomtomsoft@naver.com.
 
