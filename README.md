@@ -199,3 +199,172 @@ HTTP library for iOS (Objective-C, Swift)
 		}
 
 
+
+
+[Swift example]
+
+1. download sunbighttp.xcframework.zip 
+	- unzip and copy to project folder.
+	- add to project.
+
+2. info.plist
+
+	- Add 'App Transport Security Settings'.
+
+	- ex)
+
+		<key>NSAppTransportSecurity</key>
+		<dict>
+			<key>NSAllowsArbitraryLoads</key>
+			<true/>
+		</dict>	
+
+
+3. Usage
+
+
+	3.1. header import
+
+		import sunbighttp
+
+
+
+	3.2. GET request
+
+	    @IBAction func btn_get(_ sender: Any)
+	    {
+	        let sURL = "http://yourdomain-port/json/?page=2&city=XXXXX"
+	        let sContentType = "application/x-www-form-urlencoded"
+	        var dicParam = [
+	            "nickname": "test10"
+	        ]
+	        let gtk = SBHttp()
+	        gtk.get(sURL, withParam: dicParam) { error, data in
+	            if error != nil {
+	                print("error: %@", error.localizedDescription)
+	                return
+	            }
+	            if(data != nil) {
+
+	                do {
+	                    let sJson = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+	                    print(sJson)
+	                } catch let jsonError {
+	                    print(jsonError)
+	                }
+	            }
+	        }
+	        
+	    }
+
+
+	3.3. POST (x-www-form-urlencoded)		
+
+
+
+	    @IBAction func btn_post_encoded(_ sender: Any)
+	    {
+	        let sURL = "http://yourdomain-port/json/add1"
+	        let sContentType = "application/x-www-form-urlencoded"
+	        var dicParam = [
+	            "nickname": "test10"
+	        ]
+	        let gtk = SBHttp()
+	        gtk.post(sURL, withParam: dicParam, withAttach: [], contentType: sContentType) {
+	        	 error, data in
+	        	 
+	            if error != nil {
+	                print("error: %@", error.localizedDescription)
+	                return
+	            }
+	            if(data != nil) {
+
+	                do {
+	                    let sJson = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+	                    print(sJson)
+	                } catch let jsonError {
+	                    print(jsonError)
+	                }
+	            }
+	        }
+	        
+	    }
+
+	3.4. POST (JSON)		
+
+	    @IBAction func btn_post_json(_ sender: Any)
+	    {
+	        let sURL = "http://yourdomain-port/json/add1"
+	        let sContentType = "application/json"
+	        var dicParam = [
+	            "nickname": "test10"
+	        ]
+	        let gtk = SBHttp()
+	        
+	        gtk.post(sURL, withParam: dicParam, withAttach: [], contentType: sContentType) { error, data in
+	            if error != nil {
+	                print("error: %@", error.localizedDescription)
+	                return
+	            }
+	            if(data != nil) {
+
+	                do {
+	                    let sJson = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+	                    print(sJson)
+	                } catch let jsonError {
+	                    print(jsonError)
+	                }
+	            }
+	        }
+	    }
+
+	3.5. POST (Files)
+
+
+
+	    @IBAction func btn_post_files(_ sender: Any)
+	    {
+	        let sURL = "http://yourdomain-port/json/add2"
+	        let sContentType = "application/json"
+	        var dicParam = [
+	            "nickname": "test10"
+	        ]
+	        var arrAttachFiles = [
+	            UIImage(named: "koala"), UIImage(named: "koala-2")
+	        ]
+	        var arrAttachNames = [
+	            "koala.png", "koala-2.png"
+	        ]
+	        var arrAttachData = [[String:Any]]()
+	        for (index, img) in arrAttachFiles.enumerated() {
+	            
+	            let d1 = arrAttachFiles[index]!.jpegData(compressionQuality: 90)
+	            let f1 = arrAttachNames[index]
+	            
+	            let dic:[String:Any] = ["Data": d1, "Filename": f1]
+	            arrAttachData.append(dic)
+	        }
+	        
+	        
+	        let gtk = SBHttp()
+	        
+	        gtk.post(sURL, withParam: dicParam, withAttach: arrAttachData, contentType: sContentType) { error, data in
+	            if error != nil {
+	                print("error: %@", error.localizedDescription)
+	                return
+	            }
+	            if(data != nil) {
+
+	                do {
+	                    let sJson = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+	                    print(sJson)
+	                } catch let jsonError {
+	                    print(jsonError)
+	                }
+	            }
+	        }
+	    }
+	    
+	    
+
+
