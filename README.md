@@ -348,7 +348,7 @@ HTTP library for iOS (Objective-C, Swift)
 	            
 	            let d1 = arrAttachFiles[index]!.jpegData(compressionQuality: 90)
 	            let f1 = arrAttachNames[index]
-		    let k1 = "file\(index+1)"
+ 		    let k1 = "file\(index+1)"
 	            
 	            let dic:[String:Any] = ["Data": d1, "Filename": f1, "Name": k1]
 	            arrAttachData.append(dic)
