@@ -149,6 +149,10 @@ HTTP library for iOS (Objective-C, Swift)
 
 	3.5. POST (Files)
 
+		- HTML 
+		<input type="file" name="file1">
+		<input type="file" name="file2">
+
 
 		- (IBAction)btn_post_files:(id)sender
 		{
@@ -166,9 +170,10 @@ HTTP library for iOS (Objective-C, Swift)
 		    for(int i=0; i<[arrImg count]; i++) {
 		        UIImage* imgData = [arrImg objectAtIndex:i];
 		        NSString* sFilename = [arrNames objectAtIndex:i];
+			NSString* sKeyName = [NSString stringWithFormat:"file%d", i+1];
 		        
 		        NSData* dataFile = UIImageJPEGRepresentation(imgData, 90);
-		        NSDictionary* dicItem = @{@"Data": dataFile, @"Filename": sFilename};
+		        NSDictionary* dicItem = @{@"Data": dataFile, @"Filename": sFilename, @"Name": sKeyName};
 		        [arrFiles addObject:dicItem];
 		    }
 		    
