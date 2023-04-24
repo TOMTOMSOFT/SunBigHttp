@@ -172,7 +172,7 @@ HTTP library for iOS (Objective-C, Swift)
 		        NSString* sFilename = [arrNames objectAtIndex:i];
 			NSString* sKeyName = [NSString stringWithFormat:"file%d", i+1];
 		        
-		        NSData* dataFile = UIImageJPEGRepresentation(imgData, 90);
+		        NSData* dataFile = UIImageJPEGRepresentation(imgData, 1.0);
 		        NSDictionary* dicItem = @{@"Data": dataFile, @"Filename": sFilename, @"Name": sKeyName};
 		        [arrFiles addObject:dicItem];
 		    }
@@ -346,7 +346,7 @@ HTTP library for iOS (Objective-C, Swift)
 	        var arrAttachData = [[String:Any]]()
 	        for (index, img) in arrAttachFiles.enumerated() {
 	            
-	            let d1 = arrAttachFiles[index]!.jpegData(compressionQuality: 90)
+	            let d1 = arrAttachFiles[index]!.jpegData(compressionQuality: 1.0)
 	            let f1 = arrAttachNames[index]
  		    let k1 = "file\(index+1)"
 	            
