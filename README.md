@@ -160,7 +160,7 @@ HTTP library for iOS (Objective-C, Swift)
 		    NSString* sURL = @"http://p1.sqlite.co.kr:9103/json/add2";
 		    NSString* sContentType = @"application/json";
 		    NSDictionary* dicParam = @{
-		        @"nickname": @"starzankim"
+		        @"nickname": @"your nickname"
 		    };
 		    
 		    NSMutableArray* arrImg = [NSMutableArray arrayWithObjects:[UIImage imageNamed:@"koala"], [UIImage imageNamed:@"koala-2"], nil];
@@ -326,7 +326,9 @@ HTTP library for iOS (Objective-C, Swift)
 
 	3.5. POST (Files)
 
-
+	     - HTML 
+	     <input type="file" name="file1">
+	     <input type="file" name="file2">
 
 	    @IBAction func btn_post_files(_ sender: Any)
 	    {
@@ -346,8 +348,9 @@ HTTP library for iOS (Objective-C, Swift)
 	            
 	            let d1 = arrAttachFiles[index]!.jpegData(compressionQuality: 90)
 	            let f1 = arrAttachNames[index]
+		    let k1 = "file\(index+1)"
 	            
-	            let dic:[String:Any] = ["Data": d1, "Filename": f1]
+	            let dic:[String:Any] = ["Data": d1, "Filename": f1, "Name": k1]
 	            arrAttachData.append(dic)
 	        }
 	        
